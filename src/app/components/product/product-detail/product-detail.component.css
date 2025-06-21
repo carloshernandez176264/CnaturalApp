@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 120px 16px 32px;
+}
+
+.product-detail-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.product-image {
+  max-height: 300px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #388e3c;
+  margin: 8px 0;
+}
+
+.product-description {
+  font-size: 16px;
+  color: #666;
+  margin: 8px 0;
+}
+
+.quantity-field {
+  width: 100%;
+  margin-top: 12px;
+}

@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-card class="product-detail-card mat-elevation-z6">
+    <img mat-card-image [src]="product.urlImage" alt="{{ product.name }}" class="product-image">
+
+    <mat-card-content>
+      <h2 class="product-title">{{ product.name }}</h2>
+      <p class="product-price">{{ product.price | currency:'COP' }}</p>
+      <p class="product-description">{{ product.description }}</p>
+
+      <mat-form-field appearance="outline" class="quantity-field">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" [(ngModel)]="quantity" min="1">
+      </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="addToCart()">
+        Añadir al carrito
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

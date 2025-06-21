@@ -1,0 +1,29 @@
+<div class="auth-container">
+  <mat-card class="auth-card mat-elevation-z6">
+    <mat-card-title class="text-center">Iniciar Sesión</mat-card-title>
+
+    <form (ngSubmit)="login()" class="auth-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo Electrónico</mat-label>
+        <mat-icon matPrefix>email</mat-icon>
+        <input matInput [(ngModel)]="username" name="username" required type="email" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput [(ngModel)]="password" name="password" required type="password" />
+      </mat-form-field>
+
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" type="submit">Ingresar</button>
+        <button mat-button color="accent" (click)="openRegister()">¿Registrarse?</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+<!-- Diálogo de Registro -->
+<ng-template>
+  <!-- Aquí se mostrará el formulario de registro como modal si deseas -->
+</ng-template>

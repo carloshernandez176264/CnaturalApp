@@ -1,0 +1,24 @@
+
+.registration-container {
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.registration-card {
+  padding: 24px;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}

@@ -1,0 +1,42 @@
+<div class="product-form-container">
+  <mat-card class="form-card mat-elevation-z6">
+    <mat-card-title>{{ isEditMode ? 'Editar Producto' : 'Agregar Producto' }}</mat-card-title>
+
+    <form (ngSubmit)="addProduct()" enctype="multipart/form-data" class="product-form" #productForm="ngForm">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <mat-select [(ngModel)]="categoryId" name="categoryId" required>
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre del producto</mat-label>
+        <input matInput [(ngModel)]="name" name="name" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput [(ngModel)]="description" name="description" required></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" [(ngModel)]="price" name="price" required />
+      </mat-form-field>
+
+      <div class="file-upload">
+        <label for="fileInput">Imagen</label>
+        <input type="file" (change)="onFileSelected($event)" id="fileInput" accept="image/*" />
+        <span *ngIf="fileName">{{ fileName }}</span>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">
+        {{ isEditMode ? 'Actualizar' : 'Guardar Producto' }}
+      </button>
+    </form>
+  </mat-card>
+</div>

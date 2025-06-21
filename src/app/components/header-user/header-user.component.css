@@ -1,0 +1,63 @@
+.sidenav-container {
+  height: 64px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo para el mat-toolbar en verde */
+.toolbar-green {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e7d32 !important; /* Verde natural */
+  color: white;
+}
+
+.app-title {
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.hide-mobile {
+  display: none;
+}
+
+.hide-desktop {
+  display: inline-flex;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+}
+
+mat-nav-list a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #444;
+}

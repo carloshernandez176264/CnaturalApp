@@ -1,0 +1,66 @@
+<div class="registration-container">
+  <mat-card class="registration-card mat-elevation-z6">
+    <mat-card-title>Registro de Usuario</mat-card-title>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <!-- Nombre -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="f['name'].invalid && f['name'].touched">El nombre es requerido.</mat-error>
+      </mat-form-field>
+
+      <!-- Apellido -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Apellido</mat-label>
+        <mat-icon matPrefix>badge</mat-icon>
+        <input matInput formControlName="surname" />
+        <mat-error *ngIf="f['surname'].invalid && f['surname'].touched">El apellido es requerido.</mat-error>
+      </mat-form-field>
+
+      <!-- Correo -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <mat-icon matPrefix>mail</mat-icon>
+        <input matInput formControlName="email" type="email" autocomplete="off" />
+        <mat-error *ngIf="f['email'].hasError('required') && f['email'].touched">El correo es requerido.</mat-error>
+        <mat-error *ngIf="f['email'].hasError('email') && f['email'].touched">Correo inválido.</mat-error>
+      </mat-form-field>
+
+      <!-- Dirección -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Dirección</mat-label>
+        <mat-icon matPrefix>home</mat-icon>
+        <input matInput formControlName="address" />
+        <mat-error *ngIf="f['address'].invalid && f['address'].touched">La dirección es requerida.</mat-error>
+      </mat-form-field>
+
+      <!-- Teléfono -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <mat-icon matPrefix>call</mat-icon>
+        <input matInput formControlName="cellphone" />
+        <mat-error *ngIf="f['cellphone'].invalid && f['cellphone'].touched">El teléfono es requerido.</mat-error>
+      </mat-form-field>
+
+      <!-- Contraseña -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput type="password" formControlName="password" />
+        <mat-error *ngIf="f['password'].hasError('required') && f['password'].touched">La contraseña es requerida.</mat-error>
+        <mat-error *ngIf="f['password'].hasError('minlength') && f['password'].touched">
+          Mínimo 8 caracteres.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Botón -->
+      <div class="button-wrapper">
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+          Registrarse
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
