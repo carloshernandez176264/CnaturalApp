@@ -20,6 +20,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { ProductDetailComponent } from './components/product/product-detail/prod
     UsersComponent,
     DetailProductComponent,
     OrdersComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProfileUpdateComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

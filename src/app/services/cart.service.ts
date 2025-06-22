@@ -1,46 +1,45 @@
 import { Injectable } from '@angular/core';
 import { ItemCart } from '../models/item-cart';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
 
-  private items: Map<number,ItemCart> = new Map<number,ItemCart>();
+ private itemsMap: Map<number, ItemCart> = new Map<number, ItemCart>();
+  private cartItemsSubject = new BehaviorSubject<ItemCart[]>([]);
 
-  itemList: ItemCart[] = [];
+  cartItems$ = this.cartItemsSubject.asObservable();
 
-  constructor() { }
+  constructor() {}
 
-  addItemCart(item: ItemCart){
-    this.items.set(item.productId, item);
-    this.itemList = Array.from(this.items.values());
+  addItemCart(item: ItemCart): void {
+    this.itemsMap.set(item.productId, item);
+    this.updateCartItems();
   }
 
-  deleteItemCart(id: number){
-    this.items.delete(id);
-    this.items.forEach(
-      (valor, clave) => {console.log('esta es la clave ' + clave + ' y el valor es ' + valor)}
-    )
+  deleteItemCart(id: number): void {
+    this.itemsMap.delete(id);
+    this.updateCartItems(); // 🔥 AQUÍ estaba el problema: no actualizabas el observable
   }
 
-  totalCart(){
-    let totalCart: number = 0;
-    this.items.forEach(
-      (item, clave) => {
-        totalCart += item.getTotalPriceItem()
-      }
-    );
-    return totalCart;
+  totalCart(): number {
+    let total = 0;
+    this.itemsMap.forEach(item => {
+      total += item.getTotalPriceItem();
+    });
+    return total;
   }
 
-  convertToListFromMap(){
-    this.itemList.splice(0, this.itemList.length);
-    this.items.forEach(
-      (item, clave) => {
-        this.itemList.push(item)
-      }
-    );
-    return this.itemList;
+  clearCart(): void {
+    this.itemsMap.clear();
+    this.updateCartItems();
   }
+
+  private updateCartItems(): void {
+    const itemsArray = Array.from(this.itemsMap.values());
+    this.cartItemsSubject.next(itemsArray); // 🔁 actualiza todos los componentes suscritos
+  }
+
 }

@@ -11,10 +11,9 @@ import { UserType } from 'src/app/models/user-type';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   username: string = '';
   password: string = '';
 
@@ -30,13 +29,17 @@ export class LoginComponent {
       Swal.fire('Error', 'Completa todos los campos', 'warning');
       return;
     }
-  
+
     const userdto = new Userdto(this.username, this.password);
-  
+
     this.authentication.login(userdto).subscribe({
       next: (token) => {
-        this.sessionStorage.setItem('token', token); // token incluye .type
-        if (token.role === UserType.ADMIN) {
+        this.sessionStorage.setItem('token', token); // Guarda token en sesión
+        const role = this.sessionStorage.getRole();
+
+        Swal.fire('Bienvenido', 'Inicio de sesión exitoso', 'success'); // Mensaje de bienvenida
+
+        if (role === 'ROLE_ADMIN') {
           this.router.navigate(['/product-add']);
         } else {
           this.router.navigate(['/home']);
@@ -44,7 +47,7 @@ export class LoginComponent {
       },
       error: () => {
         Swal.fire('Error', 'Credenciales incorrectas', 'error');
-      }
+      },
     });
   }
 
@@ -52,7 +55,7 @@ export class LoginComponent {
     this.dialog.open(RegistrationComponent, {
       width: '500px',
       disableClose: false, // permite cerrarlo al hacer click fuera
-      autoFocus: false
+      autoFocus: false,
     });
   }
 }

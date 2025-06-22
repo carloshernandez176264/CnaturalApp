@@ -4,14 +4,15 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/home" (click)="closeSidenav()">Inicio</a>
       <a mat-list-item routerLink="/product-list" (click)="closeSidenav()">Productos</a>
+      <a mat-list-item routerLink="/cart" (click)="closeSidenav()">Carrito</a>
 
       <ng-container *ngIf="!isLoggedIn">
         <a mat-list-item routerLink="/login" (click)="closeSidenav()">Login</a>
       </ng-container>
 
       <ng-container *ngIf="isLoggedIn">
-        <a mat-list-item routerLink="/cart" (click)="closeSidenav()">Carrito</a>
         <a mat-list-item routerLink="/orders" (click)="closeSidenav()">Mis pedidos</a>
+        <a mat-list-item routerLink="/profile-update" (click)="closeSidenav()">Mi perfil</a>
 
         <ng-container *ngIf="isAdmin">
           <button mat-button routerLink="/product-add">Agregar producto</button>
@@ -19,7 +20,6 @@
           <button mat-button routerLink="/category-add">Nueva categoría</button>
           <button mat-button routerLink="/users">Usuarios</button>
         </ng-container>
-        
 
         <a mat-list-item (click)="logout()">Salir</a>
       </ng-container>
@@ -40,10 +40,11 @@
     <div class="hide-mobile">
       <button mat-button routerLink="/home">Inicio</button>
       <button mat-button routerLink="/product-list">Productos</button>
+      <button mat-button routerLink="/cart">Carrito</button>
 
       <ng-container *ngIf="isLoggedIn">
-        <button mat-button routerLink="/cart">Carrito</button>
         <button mat-button routerLink="/orders">Mis pedidos</button>
+        <button mat-button routerLink="/profile-update">Mi perfil</button>
 
         <ng-container *ngIf="isAdmin">
           <button mat-button routerLink="/product-add">Agregar producto</button>

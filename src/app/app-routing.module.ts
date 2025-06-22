@@ -20,7 +20,7 @@ const routes: Routes = [
 
   // Acceso para usuarios autenticados
   { path: 'product-list', component: ProductListComponent},
-  { path: 'cart', component: DetailProductComponent, canActivate: [authUserGuard] },
+  { path: 'cart', component: DetailProductComponent },
   { path: 'orders', component: OrdersComponent, canActivate: [authUserGuard] },
   { path: 'cart/detailproduct/:id', component: ProductDetailComponent },
 
@@ -31,6 +31,9 @@ const routes: Routes = [
    { path: 'category-list', component: CategoryListComponent, canActivate: [authAdminGuard] },
    { path: 'category-add', component: CategoryAddComponent, canActivate: [authAdminGuard] },
    { path: 'users', component: UsersComponent, canActivate: [authAdminGuard] },
+
+   
+
 
 
 

@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 
@@ -37,6 +39,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSortModule,
     MatListModule,
     MatSidenavModule,
+    MatProgressSpinnerModule
 
   ]
 })

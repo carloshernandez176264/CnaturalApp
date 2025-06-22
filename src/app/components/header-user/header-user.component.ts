@@ -16,22 +16,19 @@ export class HeaderUserComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private sessionStorage: SessionStorageService
   ) {}
 
   ngOnInit(): void {
-    const token = this.sessionStorage.getItem('token');
-    this.isLoggedIn = !!token;
-    this.isAdmin = this.sessionStorage.getRole() === 'ROLE_ADMIN';
-    console.log('ROL OBTENIDO:', this.sessionStorage.getRole());
+    this.sessionStorage.isLoggedIn$.subscribe(val => this.isLoggedIn = val);
+    this.sessionStorage.isAdmin$.subscribe(val => this.isAdmin = val);
   }  
 
   logout(): void {
-    this.sessionStorage.clear();
-    this.isLoggedIn = false;
-    this.isAdmin = false;
-    this.router.navigate(['/login']);
+    this.sessionStorage.clear();    
+    this.router.navigate(['/home']);
     this.sidenav.close();
   }
 
