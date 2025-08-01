@@ -9,7 +9,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 import { SessionStorageService } from '../services/session-storage.service';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -48,33 +48,15 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           // Token expirado o inválido
           this.sessionService.clear();
-          Swal.fire({
-            title: 'Sesión expirada',
-            text: 'Tu sesión ha expirado. Serás redirigido al login.',
-            icon: 'warning',
-            timer: 3000,
-            showConfirmButton: false
-          }).then(() => {
-            this.router.navigate(['/login']);
-          });
+          alert('Sesión expirada');          
+            this.router.navigate(['/login']);         
         } else if (error.status === 403) {
           // Sin permisos
-          Swal.fire({
-            title: 'Acceso denegado',
-            text: 'No tienes permisos para realizar esta acción.',
-            icon: 'error',
-            confirmButtonText: 'Entendido'
-          });
+          alert('No tienes permisos para acceder a esta sección');
         } else if (error.status === 0) {
-          // Error de conexión
-          Swal.fire({
-            title: 'Error de conexión',
-            text: 'No se puede conectar con el servidor. Verifica tu conexión.',
-            icon: 'error',
-            confirmButtonText: 'Reintentar'
-          });
-        }
-        
+          // Sin conexión a internet
+          alert('Sin conexión a internet');
+        }        
         return throwError(() => error);
       })
     );
