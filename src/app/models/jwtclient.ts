@@ -3,6 +3,6 @@ export class JwtClient {
     constructor(
         public id: number,
         public token: string,
-        public role: string // el rol viene como "Optional[ROLE_ADMIN]"
+        public type: string // el rol viene como "Optional[ROLE_ADMIN]"
     ){}
 }

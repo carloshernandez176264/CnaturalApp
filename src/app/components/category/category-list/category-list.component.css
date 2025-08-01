@@ -1,40 +1,90 @@
 .category-container {
-  padding: 100px 24px 40px;
-  background: linear-gradient(to right, #e8f5e9, #a5d6a7);
+  padding: 40px 24px;
+  background-color: #f4fdf7;
   min-height: 100vh;
 }
 
-.mat-card {
+mat-card {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 24px;
   border-radius: 16px;
-  max-width: 900px;
-  margin: 0 auto;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.table-title {
+mat-card-title {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 24px;
-  color: #2e7d32;
+  color: #1b5e20;
+  margin-bottom: 16px;
 }
 
-.action-buttons {
+.actions {
   display: flex;
-  gap: 8px;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-bottom: 16px;
 }
 
-@media (max-width: 600px) {
-  .mat-card {
-    padding: 16px;
-  }
+.actions button {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 18px;
+}
 
-  .table-title {
-    font-size: 20px;
-  }
+.full-width-table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fcfcfc;
+}
 
-  .action-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
+table {
+  border-spacing: 0;
+}
+
+th.mat-header-cell {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+td.mat-cell {
+  font-size: 15px;
+}
+
+tr.mat-row:hover {
+  background-color: #f1f8e9;
+}
+
+mat-icon-button {
+  transition: background-color 0.2s ease-in-out;
+}
+
+mat-icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 48px 0;
+  color: #888;
+}
+
+.empty-icon {
+  font-size: 56px;
+  color: #cccccc;
+  margin-bottom: 16px;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+mat-paginator {
+  margin-top: 24px;
 }

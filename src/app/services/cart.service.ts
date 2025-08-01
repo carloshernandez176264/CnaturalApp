@@ -42,4 +42,9 @@ export class CartService {
     this.cartItemsSubject.next(itemsArray); // 🔁 actualiza todos los componentes suscritos
   }
 
+  getItems(): ItemCart[] {
+  return Array.from(this.itemsMap.values());
+}
+
+
 }

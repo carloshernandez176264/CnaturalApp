@@ -4,18 +4,24 @@
       {{ id ? 'Editar Categoría' : 'Crear Categoría' }}
     </mat-card-title>
 
-    <form (ngSubmit)="addCategory()">
+    <form (ngSubmit)="addCategory()" autocomplete="off">
       <input type="hidden" [(ngModel)]="id" name="id">
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre de la categoría</mat-label>
         <mat-icon matPrefix>category</mat-icon>
-        <input matInput [(ngModel)]="name" name="name" placeholder="Ej: Faciales" required minlength="3">
+        <input 
+          matInput 
+          [(ngModel)]="name" 
+          name="name" 
+          placeholder="Ej: Faciales" 
+          required 
+          minlength="3">
       </mat-form-field>
 
       <div class="button-wrapper">
         <button mat-raised-button color="primary" type="submit">
-          Guardar
+          <mat-icon>save</mat-icon>&nbsp;Guardar
         </button>
       </div>
     </form>

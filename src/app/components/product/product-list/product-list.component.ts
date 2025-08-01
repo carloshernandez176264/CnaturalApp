@@ -45,6 +45,10 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  addProduct(): void {
+    this.router.navigate(['/product-add']);
+  }
+
   applyFilter(event: Event): void {
     const value = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSource.filter = value;
@@ -84,5 +88,6 @@ export class ProductListComponent implements OnInit {
   viewProduct(id: number): void {
     this.router.navigate(['/cart/detailproduct', id]);
   }
+  
 
 }

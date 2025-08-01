@@ -1,26 +1,42 @@
-<div *ngIf="product; else loading" class="container">
-  <mat-card class="product-detail-card mat-elevation-z6">
-    <img mat-card-image [src]="product.urlImage" alt="{{ product.name }}" class="product-image">
+<div *ngIf="product; else loading" class="product-container">
+  <mat-card class="product-card mat-elevation-z8">
+    <div class="product-content">
 
-    <mat-card-content>
-      <h2 class="product-title">{{ product.name }}</h2>
-      <p class="product-price">{{ product.price | currency:'COP' }}</p>
-      <p class="product-description">{{ product.description }}</p>
+      <!-- Imagen destacada -->
+      <div class="product-image-container">
+        <img [src]="product.urlImage" alt="{{ product.name }}" class="product-image" />
+      </div>
 
-      <mat-form-field appearance="outline" class="quantity-field">
-        <mat-label>Cantidad</mat-label>
-        <input matInput type="number" [(ngModel)]="quantity" min="1">
-      </mat-form-field>
-    </mat-card-content>
+      <!-- Información del producto -->
+      <div class="product-info">
+        <h1 class="product-title">{{ product.name }}</h1>
 
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="addToCart()">
-        Añadir al carrito
-      </button>
-    </mat-card-actions>
+        <p class="product-price">{{ product.price | currency: 'COP':'symbol':'1.0-0' }}</p>
+
+        <p class="product-category">
+          <strong>Categoría:</strong> {{ product.category?.name || 'General' }}
+        </p>
+
+        <p class="product-description">
+          {{ product.description }}
+        </p>
+
+        <!-- Selector de cantidad -->
+        <mat-form-field appearance="outline" class="quantity-field">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" [(ngModel)]="quantity" min="1" />
+        </mat-form-field>
+
+        <!-- Botón añadir al carrito -->
+        <button mat-raised-button color="primary" class="add-to-cart-btn" (click)="addToCart()">
+          🛒 Añadir al carrito
+        </button>
+      </div>
+    </div>
   </mat-card>
 </div>
 
+<!-- Loading -->
 <ng-template #loading>
   <div class="loading-container">
     <mat-spinner></mat-spinner>

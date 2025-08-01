@@ -4,7 +4,13 @@ export interface OrderItemRequest {
 }
 
 export interface OrderRequest {
-  userId: number;
+   userId: number;
   orderState: string;
   items: OrderItemRequest[];
+  buyerData?: {
+    name: string;
+    email: string;
+    address: string;
+    phone: string;
+  };
 }

@@ -1,13 +1,15 @@
 <div class="home-container">
-  <!-- Hero principal -->
-  <section class="hero">
-    <h1>Bienvenido a C-Natural</h1>
+
+  <!-- HERO PRINCIPAL -->
+  <section class="hero mat-elevation-z4">
+    <h1>Bienvenido a <strong>C-Natural</strong></h1>
     <p>Descubre el poder de la naturaleza en cada producto. Cuida tu cuerpo con ingredientes 100% naturales.</p>
-    <button mat-raised-button color="accent" routerLink="/product-list">Explorar productos</button>
+    <button mat-raised-button color="primary" routerLink="/product-list">Explorar productos</button>
   </section>
 
+  <!-- CARRUSEL DE DESTACADOS -->
   <div class="carousel-wrapper">
-    <mat-card class="carousel-slide" *ngFor="let slide of slides; let i = index" [class.active]="i === activeSlideIndex">
+    <mat-card class="carousel-slide mat-elevation-z2" *ngFor="let slide of slides; let i = index" [class.active]="i === activeSlideIndex">
       <mat-card-header>
         <mat-card-title>{{ slide.title }}</mat-card-title>
       </mat-card-header>
@@ -17,50 +19,46 @@
     </mat-card>
   </div>
 
-  <!-- Beneficios destacados -->
+  <!-- BENEFICIOS -->
   <section class="benefits">
-    <div class="benefit-card">
-      <mat-icon fontIcon="spa" color="primary" style="font-size: 40px;"></mat-icon>
+    <div class="benefit-card mat-elevation-z3">
+      <mat-icon fontIcon="spa" color="primary" class="icon-benefit"></mat-icon>
       <h3>Sin efectos secundarios</h3>
       <p>Productos libres de químicos agresivos. Salud natural garantizada.</p>
     </div>
-    <div class="benefit-card">
-      <mat-icon fontIcon="eco" color="primary" style="font-size: 40px;"></mat-icon>
+    <div class="benefit-card mat-elevation-z3">
+      <mat-icon fontIcon="eco" color="primary" class="icon-benefit"></mat-icon>
       <h3>Ingredientes naturales</h3>
       <p>Extractos botánicos y aceites esenciales de alta pureza.</p>
     </div>
-    <div class="benefit-card">
-      <mat-icon fontIcon="group" color="primary" style="font-size: 40px;"></mat-icon>
+    <div class="benefit-card mat-elevation-z3">
+      <mat-icon fontIcon="group" color="primary" class="icon-benefit"></mat-icon>
       <h3>Para toda la familia</h3>
       <p>Fórmulas seguras para niños, adultos y personas mayores.</p>
     </div>
   </section>
 
-  <!-- Testimonios -->
+  <!-- TESTIMONIOS -->
   <section class="testimonials">
     <h2>Testimonios</h2>
-    <blockquote>
-      "Desde que uso C-Natural me siento con más energía y sin malestares. ¡Los recomiendo 100%!"<br>
-      <cite>- Laura G.</cite>
-    </blockquote>
-    <br>
-    <blockquote>
-      "La crema homeopática alivió mis dolores como ningún otro producto."<br>
-      <cite>- José R.</cite>
-    </blockquote>
+    <mat-card class="testimonial-card mat-elevation-z2">
+      <mat-card-content>
+        <blockquote>
+          "Desde que uso C-Natural me siento con más energía y sin malestares. ¡Los recomiendo 100%!"
+        </blockquote>
+        <cite>- Laura G.</cite>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="testimonial-card mat-elevation-z2">
+      <mat-card-content>
+        <blockquote>
+          "La crema homeopática alivió mis dolores como ningún otro producto."
+        </blockquote>
+        <cite>- José R.</cite>
+      </mat-card-content>
+    </mat-card>
   </section>
 
-  <!-- Llamado a la acción -->
-  <section class="cta">
+  <!-- LLAMADO A LA ACCIÓN -->
+  <section class="cta mat-elevation-z3">
     <h2>Únete a nuestra comunidad natural</h2>
-    <p>Suscríbete y recibe consejos de bienestar, promociones y más.</p>
-    <input type="email" placeholder="Tu correo electrónico">
-    <button>Suscribirme</button>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 C-Natural. Todos los derechos reservados.</p>
-    <p><a href="#">Política de privacidad</a> | <a href="#">Términos de uso</a></p>
-  </footer>
-</div>

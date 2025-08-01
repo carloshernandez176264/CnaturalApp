@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
   registerForm!: FormGroup;
@@ -30,13 +30,17 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required]],
       cellphone: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   register(): void {
     if (this.registerForm.invalid) {
-      Swal.fire('Campos inválidos', 'Revisa los campos del formulario', 'warning');
+      Swal.fire(
+        'Campos inválidos',
+        'Revisa los campos del formulario',
+        'warning'
+      );
       return;
     }
 
@@ -55,16 +59,21 @@ export class RegistrationComponent implements OnInit {
 
     this.authService.register(user).subscribe({
       next: () => {
-        Swal.fire('Éxito', 'Usuario registrado correctamente', 'success').then(() => {
-          this.dialogRef.close();
-        });
+        Swal.fire('Éxito', 'Usuario registrado correctamente', 'success').then(
+          () => {
+            this.dialogRef.close();
+          }
+        );
       },
       error: () => {
         Swal.fire('Error', 'No se pudo registrar el usuario', 'error');
-      }
+      },
     });
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
+  
 }

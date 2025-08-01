@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { JwtClient } from '../models/jwtclient';
 import { User } from '../models/user';
 import { Userdto } from '../models/userdto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private apiUrl : string = "http://localhost:8085/api/v1/security"
+  private apiUrl : string = `${environment.apiUrl}/security`
 
   constructor(
     private httpClient : HttpClient

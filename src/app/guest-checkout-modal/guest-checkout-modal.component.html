@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Datos de comprador</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="guestData.name" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Correo</mat-label>
+    <input matInput [(ngModel)]="guestData.email" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Dirección</mat-label>
+    <input matInput [(ngModel)]="guestData.address" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Teléfono</mat-label>
+    <input matInput [(ngModel)]="guestData.phone" required>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="confirm()">Confirmar</button>
+</mat-dialog-actions>

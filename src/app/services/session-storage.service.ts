@@ -62,8 +62,8 @@ export class SessionStorageService {
   }
 
   getToken() {
-    const token = this.getItem('token');
-    return token ? token.token : null;
+     const tokenObj = JSON.parse(sessionStorage.getItem('token') || '{}');
+     return tokenObj?.token || '';
   }
 
   get isLoggedIn$() {

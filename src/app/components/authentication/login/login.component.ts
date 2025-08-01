@@ -15,7 +15,7 @@ import { UserType } from 'src/app/models/user-type';
 })
 export class LoginComponent {
   username: string = '';
-  password: string = '';
+  password: string = '';  
 
   constructor(
     private dialog: MatDialog,
@@ -24,31 +24,18 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  login(): void {
-    if (!this.username || !this.password) {
-      Swal.fire('Error', 'Completa todos los campos', 'warning');
-      return;
-    }
-
-    const userdto = new Userdto(this.username, this.password);
-
-    this.authentication.login(userdto).subscribe({
-      next: (token) => {
-        this.sessionStorage.setItem('token', token); // Guarda token en sesión
-        const role = this.sessionStorage.getRole();
-
-        Swal.fire('Bienvenido', 'Inicio de sesión exitoso', 'success'); // Mensaje de bienvenida
-
-        if (role === 'ROLE_ADMIN') {
-          this.router.navigate(['/product-add']);
-        } else {
-          this.router.navigate(['/home']);
+  login(){
+    let userdto = new Userdto(this.username, this.password);
+    this.authentication.login(userdto).subscribe(
+      token => {
+        this.sessionStorage.setItem('token', token);
+        if(token.type == 'ADMIN'){
+          this.router.navigate(['/admin/product']);
+        }else{
+          this.router.navigate(['/']);
         }
-      },
-      error: () => {
-        Swal.fire('Error', 'Credenciales incorrectas', 'error');
-      },
-    });
+      }
+    )
   }
 
   openRegister(): void {
